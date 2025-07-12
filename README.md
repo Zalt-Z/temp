@@ -74,18 +74,18 @@ server_ip = "192.168.19.XXX"  # Update this!
 ## Functionality
 
 ### Upload Flow
-User selects a file.
-File is AES-256 encrypted.
-AES key is encrypted with receiver's RSA public key.
-Ciphertext is signed using sender's private RSA key.
-Four components (cipher, iv, key, sig) are uploaded to the server.
+1. User selects a file.
+2. File is AES-256 encrypted.
+3. AES key is encrypted with receiver's RSA public key.
+4. Ciphertext is signed using sender's private RSA key.
+5. Four components (cipher, iv, key, sig) are uploaded to the server.
 
 ### Download & Verify Flow
-User selects a filename from dropdown.
-The four file components are downloaded from the server.
-Signature is verified with sender's public key.
-AES key is decrypted using receiver's private key.
-File is decrypted and saved locally.
+1.  selects a filename from dropdown.
+2. The four file components are downloaded from the server.
+3. Signature is verified with sender's public key.
+4. AES key is decrypted using receiver's private key.
+5. File is decrypted and saved locally.
 
 ## Testing Tips
 Use two machines: one for running the server, another for the client GUI.
