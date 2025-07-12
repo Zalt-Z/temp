@@ -13,6 +13,7 @@
 
 ## File Structure
 
+```
 SafeDrop/
 ├── certs/ # Generated RSA key pairs
 ├── client/
@@ -23,6 +24,7 @@ SafeDrop/
 │ └── received/ # Folder to store received files
 ├── generate_keys.py # Script to generate RSA key pairs
 ├── readme.md
+```
 
 ## Setup Instructions
 
