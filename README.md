@@ -12,7 +12,6 @@
 - **File dropdown** to select available encrypted files on the server.
 
 ## File Structure
-
 ```
 SafeDrop/
 ├── certs/ # Generated RSA key pairs
@@ -28,17 +27,40 @@ SafeDrop/
 
 ## Setup Instructions
 
-### How to run the server
+# How to run the server
 Perform the following steps on another machine such as a Ubuntu Virtual Machine.
 
-1. Install required Python libraries:
+**Install required Python libraries:**
+```pip install flask```
+
+**Start the Server:**
+```python ./server/server.py```
+Server listens on ```http://0.0.0.0:5000``` and stores encrypted files in ```received/```.
+
+
+# How to run the client
+Perform the following steps on your host machine.
+
+**Install required Python libraries:**
+```pip install cryptography requests```
+
+**Generate RSA key pairs:**
+```python generate_keys.py```
+This creates 4 files in ```certs/```:
 ```
-pip install flask
+sender_private.pem
+sender_public.pem
+receiver_private.pem
+receiver_public.pem
 ```
-2. Start the Server:
-```
-python ./server/server.py
-```
-Server listens on http://0.0.0.0:5000 and stores encrypted files in received/.
+
+**Run the Client GUI**
+```python ./client/gui.py```
+*Important: Make sure to update the ```server_ip``` variable in gui.py to match your VM's IP address.*
+```server_ip = "192.168.19.XXX"  # Update this!```
+
+
+
+
 
 
