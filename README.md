@@ -81,25 +81,13 @@ server_ip = "192.168.19.XXX"  # Update this!
 5. Four components (cipher, iv, key, sig) are uploaded to the server.
 
 ### Download & Verify Flow
-1.  selects a filename from dropdown.
+1. User selects a filename from dropdown.
 2. The four file components are downloaded from the server.
 3. Signature is verified with sender's public key.
 4. AES key is decrypted using receiver's private key.
 5. File is decrypted and saved locally.
 
 ## Testing Tips
-Use two machines: one for running the server, another for the client GUI.
-Try corrupting one file component on the server to observe signature failure.
-Use a unique file name when uploading to avoid overwriting.
-
-
-
-
-
-
-
-
-
-
-
-
+* Use two machines: one for running the server, another for the client GUI.
+* Try corrupting one file component on the server to observe signature failure.
+* Use a unique file name when uploading to avoid overwriting.
