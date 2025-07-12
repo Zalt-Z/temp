@@ -27,25 +27,33 @@ SafeDrop/
 
 ## Setup Instructions
 
-# How to run the server
+### How to run the server
 Perform the following steps on another machine such as a Ubuntu Virtual Machine.
 
 **Install required Python libraries:**
-```pip install flask```
+```
+pip install flask
+```
 
 **Start the Server:**
-```python ./server/server.py```
+```
+python ./server/server.py
+```
 Server listens on ```http://0.0.0.0:5000``` and stores encrypted files in ```received/```.
 
 
-# How to run the client
+### How to run the client
 Perform the following steps on your host machine.
 
 **Install required Python libraries:**
-```pip install cryptography requests```
+```
+pip install cryptography requests
+```
 
 **Generate RSA key pairs:**
-```python generate_keys.py```
+```
+python generate_keys.py
+```
 This creates 4 files in ```certs/```:
 ```
 sender_private.pem
@@ -55,9 +63,40 @@ receiver_public.pem
 ```
 
 **Run the Client GUI**
-```python ./client/gui.py```
+```
+python ./client/gui.py
+```
 *Important: Make sure to update the ```server_ip``` variable in gui.py to match your VM's IP address.*
-```server_ip = "192.168.19.XXX"  # Update this!```
+```
+server_ip = "192.168.19.XXX"  # Update this!
+```
+
+## Functionality
+
+### Upload Flow
+User selects a file.
+File is AES-256 encrypted.
+AES key is encrypted with receiver's RSA public key.
+Ciphertext is signed using sender's private RSA key.
+Four components (cipher, iv, key, sig) are uploaded to the server.
+
+### Download & Verify Flow
+User selects a filename from dropdown.
+The four file components are downloaded from the server.
+Signature is verified with sender's public key.
+AES key is decrypted using receiver's private key.
+File is decrypted and saved locally.
+
+## Testing Tips
+Use two machines: one for running the server, another for the client GUI.
+Try corrupting one file component on the server to observe signature failure.
+Use a unique file name when uploading to avoid overwriting.
+
+
+
+
+
+
 
 
 
